@@ -1,25 +1,30 @@
-# Midterm 23
+# Hubble homework 4
 
-This is the midterm for CP1-23 based on Edwin's Hubble paper on the velocity-distance relation of extra galactic nebulae.
+This is the Homwork for CP1-24 based on Edwin's Hubble paper on the velocity-distance relation of extra galactic nebulae.
+Everyone has to choose a task during the first day after publishing the homework.
+The tasks have strict deadlines and depend on each other. 
+Every task will be graded at the time it is due.
+Any missing task element at its deadline will be filled in by me.
 
-*Algorithm (14 points):*
-- Make a least-squares fit with uncertainties based on the pseudo-code below to the 9 groups (open circles) in Figure 1 of [_Hubble's 1929 article_](https://www.pnas.org/content/pnas/15/3/168.full.pdf) (2 points).
-- Generate a library named `hubble_tools.py` for the above algorithm that also can take lists of velocities and distances and returns a dictionary of the fitting parameters (4 points).
-- Add a function to the library that can estimate the age of the universe based on the data in the Hubble paper (2 points).
-- Determine the 9 groups of the figure (see hint below) and generate a data file (eg csv) with the velocities and distances (2 points).
-- Programmatically read back in this data in your code to do the fit (4 points).
+3 teams for 3 task groups:
 
-*Documentation (14 points):*
-- Generate docstrings for your library (4 points).
-- Describe in your documentation how you selected the 9 groups (4 points).
-- Compare the slope of the fitted straight line to Hubble's value of K (2 points).
-- Describe how to run your code (4 points).
+*Team Data and Documentation (3 members):*
+- Select the 9 groups (due till HW deadline -6 days)(1 member) 
+- Describe in the documentation how the 9 groups were selected (1 member due till HW deadline -2 days)
+- Compare the slope of the fitted straight line to Hubble's value of K and explain if there is a discrepancy (1 member due at homework deadline).
 
-*Tools (14 points):*
-- Write unit tests for both algorithms (4 points).
-- Add github actions for unit testing (using pytest) and linting (linter of your choice) of your code (4 points)
-- Choose an appropiate license for your project (1 point)
-- Add a bibliography in your documentation and references to all sources you used (5 points).
+*Team Algorithm + unit test + docstrings (12 members):*
+- Translate the pseudo-code below into python code (1 member) with docstrings (1 member) and unit tests (1 member) (due till HW deadline -6 days)
+- Make a least-squares fit with uncertainties to the 9 groups (open circles) in Figure 1 of [_Hubble's 1929 article_](https://www.pnas.org/content/pnas/15/3/168.full.pdf) using the code above (1 member due till HW deadline -3 days).
+- Write a function that takes lists of velocities and distances and returns a dictionary of the fitting parameters (1 member) (including unit test and docstrings) (1 member due till HW deadline -6 days).
+- Add a function to the library that can estimate the age of the universe based on the data in the Hubble paper (1 member) (including unit test and docstrings 1 member)) (due till HW deadline days).
+- Determine the 9 groups of the figure (see documentation team) and generate a data file (eg csv) with the velocities and distances (1 member) (including unit test and docstrings 1 member)) due till HW deadline -4 days).
+- Programmatically read back in this data in your code to do the fit (1 member) (including unit test and docstrings 1 member)) due till HW deadline days).
+
+*Team Tools (2 members):*
+- Add github action for unit testing (using pytest) (1 member) for all code (due till HW deadline -4 days)
+- Add github action for linting (flake8)  (1 member) for all code (due till HW deadline -6 days)
+- The team tools members are also the maintainer of this homework
 
 
 ### Pseudocode:
