@@ -9,25 +9,24 @@ Any missing task element at its deadline will be filled in by me.
 
 3 teams for 3 task groups:
 
+*Team Tools (2 members):*
+- Add github action for linting (flake8)  (1 member) for all code (due till Monday 2pm)
+- Add github action for unit testing (using pytest) (1 member) for all code (due till Wednesday 2pm)
+- The team tools members are also the maintainer of this homework responsible for merging PRs.
+
 *Team Data and Documentation (3 members):*
-- Select the 9 groups (due till Monday 2pm)(1 member) 
+- Select the 9 groups (open circles) in Figure 1 of [_Hubble's 1929 article_](https://www.pnas.org/content/pnas/15/3/168.full.pdf)(due till Monday 2pm)(1 member) 
 - Describe in the documentation how the 9 groups were selected (1 member due till Friday 2pm)
 - Compare the slope of the fitted straight line to Hubble's value of K and explain if there is a discrepancy (1 member due at homework deadline).
 
 *Team Algorithm (includes unit test and docstrings) (12+ members):*
 - Translate the pseudo-code below into python code (1 member) (due till Monday 2pm) with docstrings and unit tests (1 member) (due  till Wednesday 2pm)
 - Translate the pseudo-code below into C++ code (1 member due till Thursday 2pm) that will be wrapped in a python function with docstrings and unit tests (1 member due till HW deadline)
-- Make a least-squares fit with uncertainties to the 9 groups (open circles) in Figure 1 of [_Hubble's 1929 article_](https://www.pnas.org/content/pnas/15/3/168.full.pdf) using the code above (1 member due till Wednesday 2pm).
+- Make a least-squares fit with uncertainties to the 9 groups using the code above (1 member due till Wednesday 2pm).
 - Write a function that takes lists of velocities and distances and returns a dictionary of the fitting parameters (1 member due till Friday 2pm) (including unit test and docstrings) (1 member due till HW deadline).
 - Write a function that can estimate the age of the universe based on the data in the Hubble paper (1 member due till Friday 2pm) including unit test and docstrings (1 member due till HW deadline).
 - Determine the 9 groups of the figure (see documentation team) and generate a csv file with the velocities and distances (1 member due till Wednesday 2pm).
 - Programmatically read back in this data in your code to do the fit (1 member due till Friday 2pm) including unit test and docstrings (1 member due till HW deadline).
-
-*Team Tools (2 members):*
-- Add github action for unit testing (using pytest) (1 member) for all code (due till Wednesday 2pm)
-- Add github action for linting (flake8)  (1 member) for all code (due till Monday 2pm)
-- The team tools members are also the maintainer of this homework responsible for merging PRs.
-
 
 ### Pseudocode:
 ```
