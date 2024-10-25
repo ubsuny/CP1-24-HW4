@@ -6,13 +6,14 @@ Tasks are distributed on a first come first serve basis starting with distributi
 The tasks have strict deadlines and depend on each other. 
 Every task will be graded at the time it is due.
 Any missing task element at its deadline will be filled in by me.
+Everyone can ask the maintainers to review a PR (if one is available). The review should be completed immediately (2 hours) after assignment.
 
 3 teams for 3 task groups:
 
 *Team Tools (2 members):*
 - Add github action for linting (flake8)  (1 member) for all code (due till Monday 2pm)
 - Add github action for unit testing (using pytest) (1 member) for all code (due till Wednesday 2pm)
-- The team tools members are also the maintainer of this homework responsible for merging PRs.
+- The team tools members are also the maintainer of this homework responsible for merging PRs. They can also assign reviews and review PRs.
 
 *Team Data and Documentation (3 members):*
 - Select the 9 groups (open circles) in Figure 1 of [_Hubble's 1929 article_](https://www.pnas.org/content/pnas/15/3/168.full.pdf)(due till Monday 2pm)(1 member) 
