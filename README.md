@@ -17,12 +17,12 @@ Everyone can ask the maintainers to review a PR (if one is available). The revie
 
 *Team Data and Documentation (3 members):*
 - Select the 9 groups (open circles) in Figure 1 of [_Hubble's 1929 article_](https://www.pnas.org/content/pnas/15/3/168.full.pdf)(due till Monday 2pm)(1 member) 
-- Describe in the documentation how the 9 groups were selected (1 member due till Friday 2pm)
+- Describe in the documentation how the 9 groups were selected (1 member due at homework deadline)
 - Compare the slope of the fitted straight line to Hubble's value of K and explain if there is a discrepancy (1 member due at homework deadline).
 
 *Team Algorithm (includes unit test and docstrings) (12+ members):*
 - Translate the pseudo-code below into python code (1 member) (due till Monday 2pm) with docstrings and unit tests (1 member) (due  till Wednesday 2pm)
-- Translate the pseudo-code below into C++ code (1 member due till Thursday 2pm) that will be wrapped in a python function with docstrings and unit tests (1 member due till HW deadline)
+- Translate the pseudo-code below into C++ code (1 member due till Wednesday 2pm) that will be wrapped in a python function with docstrings and unit tests (1 member due till HW deadline)
 - Make a least-squares fit with uncertainties to the 9 groups using the code above (1 member due till Wednesday 2pm).
 - Write a function that takes lists of velocities and distances and returns a dictionary of the fitting parameters (1 member due till Friday 2pm) (including unit test and docstrings) (1 member due till HW deadline).
 - Write a function that can estimate the age of the universe based on the data in the Hubble paper (1 member due till Friday 2pm) including unit test and docstrings (1 member due till HW deadline).
