@@ -1,3 +1,8 @@
 # Group Selection
 
-The plots in Hubble's paper ([_A RELATION BETWEEN DISTANCE AND RADIAL VELOCITY AMONG EXTRA-GALACTIC NEBULAE_](https://www.pnas.org/content/pnas/15/3/168.full.pdf)) contain best fit lines for two sets of data. The first set is velocity versus distance data for 24 nebulae (24 data points). The second is a grouped version of the first. There are nine groups (nine data points) which are grouped based "according to proximity in direction and distance."
+## Method of Grouping
+The plot in Hubble's paper ([_A RELATION BETWEEN DISTANCE AND RADIAL VELOCITY AMONG EXTRA-GALACTIC NEBULAE_](https://www.pnas.org/content/pnas/15/3/168.full.pdf)) contains best fit lines for two sets of data. The first set is velocity versus distance data for 24 nebulae (24 data points). The second is a grouped version of the first. There are nine groups (nine data points) which are grouped based "according to proximity in direction and distance." Although no specific/quantifiable method for grouping was established in the paper, it seems the data was grouped in this way based on the first column of table one. The first column represents the name of the nebula as listed in the [_NGC Catalog_](http://spider.seds.org/ngc/ngc.html). In that catalog, nebulae that have similar numerical values in their name are generally spatially near one another. In [raw_data_table_1_groupped.md](/workspaces/CP1-24-HW4/Data/raw_data_table1_grouped.md) we have grouped the data by their catalog name and, averaging over the groups, have produced a plot similar to Figure 1 in the original paper. 
+
+
+## Purpose of grouping
+This selection was done to limit the effects of peculiar motion on the data. By peculiar motion, we mean motion that deviates from the general expansion of the universe. Hubble specifically mentions the Virgo Cluster, which has large peculiar motion. By grouping the data, the effects of peculiar motion are averaged over and therefore limited.
