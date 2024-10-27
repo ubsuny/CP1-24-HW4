@@ -1,0 +1,3 @@
+# Group Selection
+
+The plots in Hubble's paper ([_A RELATION BETWEEN DISTANCE AND RADIAL VELOCITY AMONG EXTRA-GALACTIC NEBULAE_](https://www.pnas.org/content/pnas/15/3/168.full.pdf)) contain best fit lines for two sets of data. The first set is velocity versus distance data for 24 nebulae (24 data points). The second is a grouped version of the first. There are nine groups (nine data points) which are grouped based "according to proximity in direction and distance."
