@@ -1,54 +1,78 @@
-def linear_fit(data):
-    n = len(data)
+import pandas as pd
+
+def read_data_from_csv(filename):
+    """
+    Reads x, y, and sigma values from a CSV file.
+    
+    Parameters:
+        filename (str): The path to the CSV file.
+        
+    Returns:
+        tuple: Three lists containing x, y, and sigma values.
+    """
+    df = pd.read_csv(filename)
+    x = df['x'].tolist()
+    y = df['y'].tolist()
+    sigma = df['sigma'].tolist()
+    return x, y, sigma
+
+def linear_fit(x, y, sigma):
+    """
+    Perform a weighted least-squares linear fit to the given data.
+
+    Parameters:
+        x (list): List of x values.
+        y (list): List of y values.
+        sigma (list): List of sigma (uncertainty) values for y.
+
+    Returns:
+        dict: A dictionary with keys 'intercept' (a), 'slope' (b), 'sigma_a', 'sigma_b', and 'chi_squared'.
+              Returns None if the fit cannot be performed due to insufficient data or invalid sigma values.
+    """
+    n = len(x)
     if n < 2:
         print('Error! Not enough data!')
-        return
+        return None
     
-    S = 0.0
-    s_x = 0.0
-    s_y = 0.0
+    S, s_x, s_y = 0.0, 0.0, 0.0
     
-    # First loop for S, s_x, s_y
     for i in range(n):
-        x_i, y_i, sigma_i = data[i]
-        if abs(sigma_i) < 0.00001:
+        if abs(sigma[i]) < 0.00001:
             print("Error! sigma_i is too small.")
-            return
-        S += 1.0 / sigma_i**2
-        s_x += x_i / sigma_i**2
-        s_y += y_i / sigma_i**2
+            return None
+        weight = 1.0 / sigma[i]**2
+        S += weight
+        s_x += x[i] * weight
+        s_y += y[i] * weight
 
-    # Second loop for t_i, s_tt, and b
-    s_tt = 0.0
-    b = 0.0
+    s_tt, b = 0.0, 0.0
     for i in range(n):
-        x_i, y_i, sigma_i = data[i]
-        t_i = 1.0 / sigma_i * (x_i - s_x / S)
+        weight = 1.0 / sigma[i]
+        t_i = weight * (x[i] - s_x / S)
         s_tt += t_i**2
-        b += t_i * y_i / sigma_i
+        b += t_i * y[i] * weight
     
-    # Check if S is too small
     if abs(S) < 0.000001:
         print("Error! S is too small.")
-        return
-    
-    # Compute slope (b) and intercept (a)
-    b = b / s_tt
-    a = (s_y - s_x * b) / S
-    
-    # Calculate error estimates for a and b
-    sigma_a2 = (1 + s_x**2 / (S * s_tt)) / S
-    sigma_b2 = 1.0 / s_tt
-    
-    # Compute chi-squared
-    chi2 = 0.0
-    for i in range(n):
-        x_i, y_i, sigma_i = data[i]
-        chi2 += ((y_i - a - b * x_i) / sigma_i)**2
-    
-    return a, b, sigma_a2, sigma_b2, chi2
+        return None
 
-# Test the function with sample data
-test_data = [(1, 2, 0.1), (2, 3, 0.1), (3, 4, 0.1)]
-result = linear_fit(test_data)
+    b /= s_tt
+    a = (s_y - s_x * b) / S
+    sigma_a = (1 + s_x**2 / (S * s_tt))**0.5 / S**0.5
+    sigma_b = (1.0 / s_tt)**0.5
+    
+    chi2 = sum(((y[i] - a - b * x[i]) / sigma[i])**2 for i in range(n))
+    
+    return {
+        'intercept': a,
+        'slope': b,
+        'sigma_a': sigma_a,
+        'sigma_b': sigma_b,
+        'chi_squared': chi2
+    }
+
+# Usage example
+filename = 'data.csv'
+x, y, sigma = read_data_from_csv(filename)
+result = linear_fit(x, y, sigma)
 print("Results:", result)
