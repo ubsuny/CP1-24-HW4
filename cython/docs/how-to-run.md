@@ -16,7 +16,7 @@ python -m setup build_ext --inplace
 This will produce a new file called `compute.pyd` which can be imported as a python module, as well as an analysis document named `compute.html` (which can also be found in the /docs/ directory) which highlights the lines of code that utilize the most time/resources.
 
 ## Usage
-Once its compile, the module can be imported with:
+Once its compiled, the module can be imported with:
 ```python
 import compute
 ```
