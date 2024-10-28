@@ -1,0 +1,5 @@
+Cython
+matplotlib
+numpy
+pandas
+setuptools
