@@ -89,7 +89,7 @@ def fit(x, y, sigma):
         s_y += y[i] * 1.0 / sigma[i]**2
 
     s_tt, b = 0.0, 0.0
-    #Removed squared term in t_i
+
     for i in range(n):
         t_i = 1.0 / sigma[i] * (x[i] - s_x / variance_sum)
         s_tt += (t_i)**2
