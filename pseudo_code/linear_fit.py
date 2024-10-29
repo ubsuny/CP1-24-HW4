@@ -6,16 +6,17 @@ Outputs intercept a, slope b, standard deviation of each, and a quality of fit.
 
 import pandas as pd
 
-def read_data_from_csv(filename, x_header='x', y_header='y', sigma_header='sigma'):
+
+def read_data_from_csv(filename, x_h='x', y_h='y', sigma_h='sigma'):
     """
     Reads CSV and outputs x, y, and sigma.
     CSV must have headers named 'x','y','sigma' unless specified in input.
 
     Parameters:
     - filename (str): The path to the CSV file.
-    - x_header (str): Header of the column in csv coresponding to x data.
-    - y_header (str): Header of the column in csv coresponding to y data.
-    - sigma_header (str): Header of the column in csv coresponding to error data.
+    - x_h (str): Header of the column in csv coresponding to x data.
+    - y_h (str): Header of the column in csv coresponding to y data.
+    - sigma_h (str): Header of the column in csv coresponding to error data.
 
     Returns:
     - tuple: Three lists containing x, y, and sigma values.
@@ -27,7 +28,7 @@ def read_data_from_csv(filename, x_header='x', y_header='y', sigma_header='sigma
     """
 
     # Checks if input file and headers are strings.
-    if not all(isinstance(i, str) for i in [filename, x_header, y_header, sigma_header]):
+    if not all(isinstance(i, str) for i in [filename, x_h, y_h, sigma_h]):
         raise TypeError("File path and headers must be strings.")
     # Tries to open CSV, if file not found, returns specified error.
     try:
@@ -35,14 +36,15 @@ def read_data_from_csv(filename, x_header='x', y_header='y', sigma_header='sigma
     except FileNotFoundError as exc:
         raise FileNotFoundError("File was not found.") from exc
     # Checks if headers are in CSV columns.
-    for i in [x_header, y_header, sigma_header]:
+    for i in [x_h, y_h, sigma_h]:
         if i not in df.columns:
             raise KeyError("File headers not found in CSV.")
 
-    x = df[x_header].values.tolist()
-    y = df[y_header].values.tolist()
-    sigma = df[sigma_header].values.tolist()
+    x = df[x_h].values.tolist()
+    y = df[y_h].values.tolist()
+    sigma = df[sigma_h].values.tolist()
     return x, y, sigma
+
 
 def fit(x, y, sigma):
     """
@@ -55,7 +57,7 @@ def fit(x, y, sigma):
 
     Returns:
     - Dictionary of intercept, slope, error of each, and quality of fit.
-    
+
     Defined Errors:
     - Inputs not lists.
     - Elements of lists not numeric.
@@ -64,14 +66,14 @@ def fit(x, y, sigma):
     - Error too small (divide by zero)
     - Sum of variance too small (divide by zero)
     """
-     # Error Checks:
-     # Checks if inputs are lists.
+    # Error Checks:
+    # Checks if inputs are lists.
     if not all(isinstance(i, list) for i in [x, y, sigma]):
         raise TypeError("Input not in form of lists.")
     # Checks if elements of lists are numeric.
-    if not all(isinstance(i, (int,float)) for groups in [x, y, sigma] for i in groups):
+    if not all(isinstance(i, (int, float)) for m in [x, y, sigma] for i in m):
         raise TypeError("Elements of list are not all numeric.")
-     # Verifies data are lists of same length.
+    # Verifies data are lists of same length.
     if not all(len(i) == len(x) for i in [y, sigma]):
         raise TypeError("Data must be lists of same length.")
     # Makes sure there are at least 2 datapoint to fit.
@@ -82,7 +84,7 @@ def fit(x, y, sigma):
     variance_sum, s_x, s_y = 0.0, 0.0, 0.0
 
     for i in range(n):
-        if abs(sigma[i]) < 0.00001: # Avoids divide by 0 error.
+        if abs(sigma[i]) < 0.00001:    # Avoids divide by 0 error.
             raise ZeroDivisionError("Element of sigma is too small.")
         variance_sum += 1.0 / sigma[i]**2
         s_x += x[i] * 1.0 / sigma[i]**2
@@ -95,7 +97,7 @@ def fit(x, y, sigma):
         s_tt += (t_i)**2
         b += (t_i * y[i]) / sigma[i]
 
-    if abs(variance_sum) < 0.000001: # Avoids divide by 0 error.
+    if abs(variance_sum) < 0.000001:    # Avoids divide by 0 error.
         raise ZeroDivisionError("Sum of variance is too small.")
 
     # Calculate slope and intercept of fit:
@@ -115,6 +117,7 @@ def fit(x, y, sigma):
         'sigma_b': sigma_b,
         'chi_squared': chi2
     }
+
 
 # Usage example.
 # Only runs example if module is ran directly as a script.
