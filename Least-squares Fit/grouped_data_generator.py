@@ -52,5 +52,5 @@ group_summary_unfiltered = pd.DataFrame({
 group_summary_filtered = group_summary_unfiltered.dropna(subset=['sigma'])
 
 # Save the filtered data to CSV file
-output_path_filtered = 'Least-squares Fit/grouped_data_summary.csv'
+output_path_filtered = 'Least-squares Fit/grouped_data_summary_filtered.csv'
 group_summary_filtered.to_csv(output_path_filtered, index=False)
