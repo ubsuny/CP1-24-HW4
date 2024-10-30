@@ -1,3 +1,6 @@
+""" This code was written by dnxjay (JB). I have added it to this directory
+to import it to my main script to produce a least-squares fit """
+
 import pandas as pd
 
 def read_data_from_csv(filename):
