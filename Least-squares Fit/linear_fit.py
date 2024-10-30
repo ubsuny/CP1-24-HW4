@@ -1,4 +1,4 @@
-""" This code was written by dnxjay (JB). I have added it to this directory
+""" This code was written by dnxjay (github ID: 181004305). I have added it to this directory
 to import it to my main script to produce a least-squares fit """
 
 import pandas as pd
