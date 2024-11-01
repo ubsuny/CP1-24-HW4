@@ -13,6 +13,7 @@ Dependencies:
 
 """
 
+import csv
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -23,6 +24,29 @@ csv_file_path = 'Least-squares Fit/grouped_data_filtered.csv'
 
 # Use read_data_from_csv function to load the filtered data
 x, y, sigma = read_data_from_csv(csv_file_path)
+
+def read_data_from_csv(file_path):
+    """
+    Reads velocity and distance data from a CSV file.
+    
+    Parameters:
+    file_path (str): The path to the CSV file containing 'velocity', 'distance', and 'sigma' columns.
+    
+    Returns:
+    dict: A dictionary containing lists of velocities, distances, and uncertainties.
+    """
+    velocities = []
+    distances = []
+    sigmas = []
+    
+    with open(file_path, mode='r') as file:
+        csv_reader = csv.DictReader(file)
+        for row in csv_reader:
+            distances.append(float(row['x']))
+            velocities.append(float(row['y']))
+            sigmas.append(float(row['sigma']))
+    
+    return {'distances': distances, 'velocities': velocities, 'sigmas': sigmas}
 
 # Perform the linear fit using linear_fit function
 fit_results = linear_fit(x, y, sigma)
