@@ -1,4 +1,9 @@
-
+"""
+test_fit_params acts as a module to use 
+with pytest in the command line such that 
+the functionality of the fit_param module 
+may be confirmed. 
+"""
 from fit_param import dict_maker
 
 def test_dict_maker():
@@ -20,5 +25,16 @@ def test_dict_maker():
 
 def test_bad_data():
     """
-    This test
+    This test ensures that the dict_maker function
+    may run even if a dataset that can't be fitted 
+    is input.
     """
+    x=[1,2,3,4]
+    y=[1,2]
+    assert dict_maker(y,x)==0
+    x=[0]
+    y=[0]
+    assert dict_maker(y,x)==0
+    x=[0,0,0,0]
+    y=[0,0,0,0]
+    assert dict_maker(y,x)==0
