@@ -1,5 +1,4 @@
 """
-the code stuff
 1 megaparsec (3.09*10**19 km)
 this is for if i have the constant already if not ill need
 to revies it, since the hubbles constant is velocity moving
