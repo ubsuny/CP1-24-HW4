@@ -77,7 +77,7 @@ Galaxy catalog available at (http://spider.seds.org/ngc/ngc.html).
 | Total                            |                |              | 18         |
 |                                  |                |              |            |
 | Shared project points            |                |              |            |
-| \# Milestones                    | 18             | 1/6          | 3          |
+| \# Milestones                    | 12             | 1/4          | 3          |
 |                                  |                |              |            |
 | Total                            |                |              | 21         |
 |                                  |                |              |            |
