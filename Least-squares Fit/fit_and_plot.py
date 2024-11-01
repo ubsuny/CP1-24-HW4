@@ -14,23 +14,20 @@ Dependencies:
 """
 
 import csv
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from linear_fit import linear_fit, read_data_from_csv
+from linear_fit import linear_fit
 
 # Path to the filtered CSV file created by grouped_data_generator.py
-csv_file_path = 'Least-squares Fit/grouped_data_filtered.csv'
-
-# Use read_data_from_csv function to load the filtered data
-x, y, sigma = read_data_from_csv(csv_file_path)
+CSV_FILE_PATH = 'Least-squares Fit/grouped_data_filtered.csv'
 
 def read_data_from_csv(file_path):
     """
     Reads velocity and distance data from a CSV file.
     
     Parameters:
-    file_path (str): The path to the CSV file containing 'velocity', 'distance', and 'sigma' columns.
+    file_path (str): The path to the CSV file containing 'velocity',
+      'distance', and 'sigma' columns.
     
     Returns:
     dict: A dictionary containing lists of velocities, distances, and uncertainties.
@@ -38,15 +35,18 @@ def read_data_from_csv(file_path):
     velocities = []
     distances = []
     sigmas = []
-    
-    with open(file_path, mode='r') as file:
+
+    with open(file_path, mode='r', encoding='utf-8') as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
             distances.append(float(row['x']))
             velocities.append(float(row['y']))
             sigmas.append(float(row['sigma']))
-    
+
     return {'distances': distances, 'velocities': velocities, 'sigmas': sigmas}
+
+# Use read_data_from_csv function to load the filtered data
+x, y, sigma = read_data_from_csv(CSV_FILE_PATH)
 
 # Perform the linear fit using linear_fit function
 fit_results = linear_fit(x, y, sigma)
@@ -58,7 +58,8 @@ y_fit = fit_results['intercept'] + fit_results['slope'] * x_fit
 
 plt.figure(figsize=(8, 6))
 plt.errorbar(x, y, yerr=sigma, fmt='o', color='purple', label='Grouped Data with Uncertainties')
-plt.plot(x_fit, y_fit, color='red', label=f'Best Fit Line: v = {fit_results["intercept"]:.2f} + {fit_results["slope"]:.2f}*r')
+plt.plot(x_fit, y_fit, color='red',
+          label=f'Best Fit Line: v = {fit_results["intercept"]:.2f} + {fit_results["slope"]:.2f}*r')
 plt.xlabel('r ($10^6$ parsecs)')
 plt.ylabel('v (km/s)')
 plt.title('Grouped Data with Least-Squares Fit')
